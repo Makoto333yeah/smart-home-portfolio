@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Home Portfolio | Makoto Mita</title>
+  <meta name="description" content="ESP32×Raspberry Pi×Grafana のスマートホーム・ポートフォリオ。温湿度可視化と家電制御。">
+  <meta property="og:title" content="Smart Home Portfolio | Makoto Mita">
+  <meta property="og:description" content="温湿度可視化と家電制御を一体化したスマートホーム・デモ。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Makoto Mita</div>
+    <nav>
+      <a href="index.html">About</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero compact">
+      <h1>Smart Room Dashboard</h1>
+      <p>計測 → 蓄積 → 可視化 → 家電制御 をワンセットで実装</p>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <h2>アーキテクチャ</h2>
+        <ul>
+          <li><b>ESP32</b>：IR送受信、HTTP API（→ ESP32にGETで制御）</li>
+          <li><b>Raspberry Pi</b>：InfluxDB（時系列DB）、Grafana（可視化）</li>
+          <li><b>Python</b>：SHT31温湿度の収集・書き込み（systemd常駐）</li>
+          <li><b>Grafana Textパネル</b>：リモコンUI（ON/OFF、COOL等）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>ポイント</h2>
+        <ul>
+          <li>ローカルで完結するエッジ型構成（クラウド依存なし）</li>
+          <li>デモに映えるUI（メトリクス＋操作パネル）</li>
+          <li>実機の家電が反応する“触って分かる”体験</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>UI スクリーンショット</h2>
+      <div class="media-row">
+        <figure>
+          <img src="assets/grafana_main.png" alt="Grafana Dashboard" />
+          <figcaption>温度・湿度の大型パネル＋推移グラフ</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/grafana_control.png" alt="Grafana Remote Control" />
+          <figcaption>Remote Control（TV/エアコン/加湿器）</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>デモ動画（任意）</h2>
+      <p>ESP32にHTTPでアクセス → IR送信 → 家電が動作 → Grafanaで状態を確認。</p>
+
+      <!-- ① 直接MP4を置く場合（assets/demo.mp4）-->
+      <video controls preload="metadata" class="video">
+        <source src="assets/demo.mp4" type="video/mp4">
+        お使いのブラウザは video タグをサポートしていません。
+      </video>
+
+      <!-- ② YouTubeの非公開リンクを埋める場合（こちらの方が安定） 
+      <div class="yt">
+        <iframe src="https://www.youtube.com/embed/XXXXXXXXXXX" title="IoT Demo" frameborder="0" allowfullscreen></iframe>
+      </div>
+      -->
+      <small>※ GitHub Pages に直置きする場合は 720p / 20–30MB 以内推奨。サイズが大きい場合は YouTube の「限定公開」での埋め込みがおすすめです。</small>
+    </section>
+
+    <section class="card">
+      <h2>技術スタック</h2>
+      <div class="chips">
+        <span class="chip">ESP32 / Arduino</span>
+        <span class="chip">Python</span>
+        <span class="chip">InfluxDB</span>
+        <span class="chip">Grafana</span>
+        <span class="chip">SHT31</span>
+        <span class="chip">IR Remote</span>
+        <span class="chip">HTTP / MQTT(予定)</span>
+        <span class="chip">Linux / systemd</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>補足（セキュリティと公開方針）</h2>
+      <p>
+        デモはスクリーンショットと動画で公開。実機ダッシュボードのURL公開は安全性を考慮して控えています（要請があれば限定的に共有可能）。
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © 2025 Makoto Mita
+  </footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Makoto Mita | About</title>
+  <meta name="description" content="Makoto Mita の自己紹介。スマートホーム/Iot、Raspberry Pi、ESP32、Grafana を用いた可視化・制御に強み。">
+  <meta property="og:title" content="Makoto Mita | About">
+  <meta property="og:description" content="スマートホーム/Iot、Raspberry Pi、ESP32、Grafana を用いた可視化・制御。">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">Makoto Mita</div>
+    <nav>
+      <a href="index.html" class="active">About</a>
+      <a href="portfolio.html">Portfolio</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>スマートホーム × エッジ開発が得意です。</h1>
+      <p>
+        Raspberry Pi（InfluxDB/Grafana）と ESP32（赤外線制御）を用いて、<br>
+        「計測 → 蓄積 → 可視化 → 家電制御」までを一体化したシステムを開発しています。
+      </p>
+      <div class="chips">
+        <span class="chip">ESP32</span>
+        <span class="chip">Raspberry Pi</span>
+        <span class="chip">InfluxDB</span>
+        <span class="chip">Grafana</span>
+        <span class="chip">MQTT/HTTP</span>
+        <span class="chip">IR Remote</span>
+        <span class="chip">Python</span>
+        <span class="chip">C++/Arduino</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="portfolio.html">ポートフォリオを見る</a>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <h2>やっていること</h2>
+        <ul>
+          <li>温湿度などのセンサーデータを InfluxDB に時系列保存</li>
+          <li>Grafanaでのダッシュボード設計（アラート/テキストパネル/UI）</li>
+          <li>ESP32で赤外線（IR）制御：エアコン/加湿器/TV</li>
+          <li>Python スクリプトの常駐化（systemd/cron）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>目指していること</h2>
+        <p>
+          滞在体験を高める“見える・触れる”スマートホーム。<br>
+          現場に設置できる堅牢さと、見せても映えるUIの両立を重視します。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    © 2025 Makoto Mita
+  </footer>
+</body>
+</html>
