@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Makoto Mita</title>
+  <title>Smart Home Project | Makoto Mita</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -15,28 +15,111 @@
     </nav>
   </header>
 
-  <main class="content">
-    <section class="card">
-      <h2>スマートホーム開発</h2>
-      <h3>電子暖炉と加湿器の自動制御</h3>
-      <p>部屋の温湿度を計測し、リアルタイムで可視化。  
-      さらにESP32で家電を自動制御/遠隔操作できる、Raspberry Piベースのスマートホームシステム。</p>
-      <ul>
-        <li>温湿度センサー（SHT31）でリアルタイムデータを取得</li>
-        <li>InfluxDB＋Grafanaでグラフ化</li>
-        <li>ESP32＋赤外線モジュールでエアコン制御</li>
-        <li>HTTP通信でRaspberry Piと連携</li>
-      </ul>
-      <img src="assets/smarthome_screenshot.jpg" alt="Smart Home Dashboard" class="portfolio-image">
-      <p>🧠 使用技術: Raspberry Pi / ESP32 / InfluxDB / Grafana / Python / Arduino</p>
+  <main class="portfolio-page">
 
-      <div class="video-container">
-        <video controls width="100%">
-          <source src="assets/smarthome_demo.mp4" type="video/mp4">
-          動画を再生できません。
-        </video>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>Smart Home Project</h1>
+      <p class="subtitle">ESP32 × Raspberry Pi × Grafana</p>
+      <p class="description">
+        部屋の「今」を見える化し、心地よさを自動で最適化する。  
+        温湿度センサー、データ可視化、電子暖炉/加湿器の自動制御を組み合わせた小規模スマートホームシステム。
+      </p>
+      <div class="hero-buttons">
+        <a href="#gallery" class="btn">デモを見る</a>
+        <a href="#tech" class="btn-outline">技術を見る</a>
       </div>
     </section>
+
+    <!-- System Overview -->
+    <section class="gray-section">
+      <h2>System Overview</h2>
+      <img src="assets/system_diagram.jpg" alt="Smart Home System Diagram" class="diagram">
+      <div class="overview-grid">
+        <div class="overview-card">
+          <h3>Raspberry Pi</h3>
+          <p>データ収集と可視化を担当。Pythonスクリプトでセンサー値をInfluxDBへ記録。</p>
+        </div>
+        <div class="overview-card">
+          <h3>ESP32</h3>
+          <p>赤外線モジュールを通じて家電を制御。HTTP通信でラズパイと連携。</p>
+        </div>
+        <div class="overview-card">
+          <h3>SHT31 Sensor</h3>
+          <p>室内の温湿度を高精度に取得し、環境変化を即時にフィードバック。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Details -->
+    <section id="tech" class="content">
+      <h2>Technical Details</h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3>🧠 Raspberry Pi</h3>
+          <p>Pythonでセンサー値を取得し、InfluxDBへ自動記録。Grafanaで可視化ダッシュボードを構築。</p>
+        </div>
+        <div class="tech-card">
+          <h3>📡 ESP32</h3>
+          <p>HTTP経由でラズパイと通信。赤外線LEDでエアコンを制御し、快適温度に調整。</p>
+        </div>
+        <div class="tech-card">
+          <h3>🌡️ SHT31</h3>
+          <p>I2C通信でラズパイに接続し、温度・湿度をリアルタイム取得。</p>
+        </div>
+        <div class="tech-card">
+          <h3>💾 InfluxDB + Grafana</h3>
+          <p>ローカル環境での時系列データ蓄積とダッシュボード化を実現。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gray-section">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <figure>
+          <img src="assets/smarthome_screenshot.jpg" alt="Grafana Dashboard">
+          <figcaption>Grafanaで可視化した温湿度データ</figcaption>
+        </figure>
+        <figure>
+          <video controls width="100%">
+            <source src="assets/smarthome_demo.mp4" type="video/mp4">
+            動画を再生できません。
+          </video>
+          <figcaption>ESP32によるエアコン制御デモ</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Stack -->
+    <section class="content">
+      <h2>Technology Stack</h2>
+      <table class="stack-table">
+        <tr><th>Hardware</th><td>Raspberry Pi 4 / ESP32 / SHT31</td></tr>
+        <tr><th>Software</th><td>Python / Arduino IDE / InfluxDB / Grafana</td></tr>
+        <tr><th>Protocol</th><td>HTTP / I2C / Infrared</td></tr>
+        <tr><th>Tools</th><td>VS Code / GitHub / Terminal</td></tr>
+      </table>
+    </section>
+
+    <!-- Challenges & Learnings -->
+    <section class="gray-section">
+      <h2>Challenges & Learnings</h2>
+      <ul class="learn-list">
+        <li>ESP32とRaspberry Pi間のHTTP通信で発生する遅延を軽減。</li>
+        <li>センサー値のノイズを平滑化するために平均化アルゴリズムを実装。</li>
+        <li>GrafanaのUIを「ホテルダッシュボード」を意識したデザインに調整。</li>
+        <li>家庭用電源環境でも安定稼働するよう電力供給を最適化。</li>
+      </ul>
+    </section>
+
+    <!-- Next Step -->
+    <section class="content">
+      <h2>Next Step</h2>
+      <p>今後はMQTT通信によるリアルタイム制御や、照明との連携、環境学習による自動調整を実装予定。</p>
+    </section>
+
   </main>
 
   <footer>
