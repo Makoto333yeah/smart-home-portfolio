@@ -1,129 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Home Project | Makoto Mita</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Home Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">Makoto Mita</div>
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="profile.html">PROFILE</a>
-    </nav>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">Smart Home — System</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="https://github.com/Makoto333yeah/smart-home-portfolio" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="portfolio-page">
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <h1>Smart Home Project</h1>
-      <p class="subtitle">ESP32 × Raspberry Pi × Grafana</p>
-      <p class="description">
-        部屋の「今」を見える化し、心地よさを自動で最適化する。  
-        温湿度センサー、データ可視化、電子暖炉/加湿器の自動制御を組み合わせた小規模スマートホームシステム。
-      </p>
-      <div class="hero-buttons">
-        <a href="#gallery" class="btn">デモを見る</a>
-        <a href="#tech" class="btn-outline">技術を見る</a>
+  <main class="container">
+    <!-- 概要 -->
+    <section>
+      <h2>概要</h2>
+      <p class="sub">温湿度の計測・可視化と、HTTP→赤外線での家電制御をローカル実装。白×黒＋エメラルドでUI統一。</p>
+      <div class="grid cards" style="margin-top:12px;">
+        <article class="card span-6">
+          <h3>目的</h3>
+          <p>“測る→見える→動く”までを一貫。日常の心地よさを定量化し、直感的に操作できる体験を作る。</p>
+        </article>
+        <article class="card span-6">
+          <h3>スタック</h3>
+          <p>Raspberry Pi 4 / Python / InfluxDB / Grafana / ESP32 / IR LED/Receiver / SHT31（I2C）</p>
+        </article>
       </div>
     </section>
 
-    <!-- System Overview -->
-    <section class="gray-section">
-      <h2>System Overview</h2>
-      <img src="assets/system_diagram.jpg" alt="Smart Home System Diagram" class="diagram">
-      <div class="overview-grid">
-        <div class="overview-card">
-          <h3>Raspberry Pi</h3>
-          <p>データ収集と可視化を担当。Pythonスクリプトでセンサー値をInfluxDBへ記録。</p>
-        </div>
-        <div class="overview-card">
-          <h3>ESP32</h3>
-          <p>赤外線モジュールを通じて家電を制御。HTTP通信でラズパイと連携。</p>
-        </div>
-        <div class="overview-card">
-          <h3>SHT31 Sensor</h3>
-          <p>室内の温湿度を高精度に取得し、環境変化を即時にフィードバック。</p>
-        </div>
+    <!-- システム構成図（HTML+CSS: SVG） -->
+    <section id="architecture">
+      <h2>システム構成図 <span class="tag">Architecture</span></h2>
+      <div class="diagram" aria-label="System Architecture Diagram">
+        <svg viewBox="0 0 1100 420" role="img">
+          <!-- 矢印定義 -->
+          <defs>
+            <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"></path>
+            </marker>
+            <marker id="arrowHeadMuted" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="#9ca3af"></path>
+            </marker>
+          </defs>
+
+          <!-- 左：ESP32 -->
+          <rect class="box box-accent" x="60" y="70" width="260" height="160" rx="12"></rect>
+          <text x="80" y="100">ESP32</text>
+          <text x="80" y="128" fill="#4b5563">・赤外線LEDモジュール</text>
+          <text x="80" y="152" fill="#4b5563">・赤外線受信モジュール</text>
+          <text x="80" y="176" fill="#4b5563">・Wi-Fi接続（2.4GHz）</text>
+
+          <!-- 右：Raspberry Pi -->
+          <rect class="box box-accent" x="430" y="70" width="300" height="160" rx="12"></rect>
+          <text x="450" y="100">Raspberry Pi 4</text>
+          <text x="450" y="128" fill="#4b5563">・Python（制御スクリプト）</text>
+          <text x="450" y="152" fill="#4b5563">・InfluxDB（時系列DB）</text>
+          <text x="450" y="176" fill="#4b5563">・Grafana（可視化UI）</text>
+
+          <!-- ブラウザ -->
+          <rect class="box" x="800" y="70" width="240" height="160" rx="12"></rect>
+          <text x="820" y="100">Webブラウザ（PC等）</text>
+          <text x="820" y="128" fill="#4b5563">・Grafana Dashboard表示</text>
+
+          <!-- SHT31 -->
+          <rect class="box" x="140" y="300" width="220" height="90" rx="12"></rect>
+          <text x="160" y="332">SHT31 Sensor</text>
+          <text x="160" y="358" fill="#4b5563">・温度 / 湿度の取得</text>
+
+          <!-- 矢印：HTTP ESP32→RasPi -->
+          <line class="arrow" x1="320" y1="150" x2="430" y2="150"></line>
+          <text x="345" y="136" fill="var(--accent)">HTTP通信</text>
+
+          <!-- 矢印：RasPi→Browser（Grafana表示） -->
+          <line class="arrow-muted" x1="730" y1="150" x2="800" y2="150"></line>
+          <text x="740" y="136" fill="#6b7280">表示</text>
+
+          <!-- 矢印：SHT31→ESP32 I2C -->
+          <line class="arrow" x1="250" y1="300" x2="250" y2="230"></line>
+          <text x="170" y="270" fill="var(--accent)">I2C通信</text>
+        </svg>
       </div>
+      <p class="sub">※ 物理配置の見取り図。Raspberry PiがDB/Grafanaをホストし、ESP32はIR制御とセンサー取得を担う。</p>
     </section>
 
-    <!-- Technical Details -->
-    <section id="tech" class="content">
-      <h2>Technical Details</h2>
-      <div class="tech-grid">
-        <div class="tech-card">
-          <h3>🧠 Raspberry Pi</h3>
-          <p>Pythonでセンサー値を取得し、InfluxDBへ自動記録。Grafanaで可視化ダッシュボードを構築。</p>
-        </div>
-        <div class="tech-card">
-          <h3>📡 ESP32</h3>
-          <p>HTTP経由でラズパイと通信。赤外線LEDでエアコンを制御し、快適温度に調整。</p>
-        </div>
-        <div class="tech-card">
-          <h3>🌡️ SHT31</h3>
-          <p>I2C通信でラズパイに接続し、温度・湿度をリアルタイム取得。</p>
-        </div>
-        <div class="tech-card">
-          <h3>💾 InfluxDB + Grafana</h3>
-          <p>ローカル環境での時系列データ蓄積とダッシュボード化を実現。</p>
-        </div>
+    <!-- データフロー図（HTML+CSS: SVG） -->
+    <section id="flow">
+      <h2>データフロー図 <span class="tag">Data Flow</span></h2>
+      <div class="diagram" aria-label="Data Flow Diagram">
+        <svg viewBox="0 0 1100 460" role="img">
+          <defs>
+            <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"></path>
+            </marker>
+          </defs>
+
+          <!-- 行1：SHT31 -> Raspberry Pi -->
+          <rect class="box" x="60" y="60" width="220" height="80" rx="10"></rect>
+          <text x="80" y="100">SHT31（温湿度）</text>
+          <line class="arrow" x1="280" y1="100" x2="430" y2="100"></line>
+          <text x="300" y="88" fill="var(--accent)">I2C</text>
+
+          <rect class="box" x="430" y="60" width="260" height="80" rx="10"></rect>
+          <text x="450" y="94">Raspberry Pi（Python）</text>
+
+          <!-- 行2：RasPi -> InfluxDB -> Grafana -->
+          <line class="arrow" x1="560" y1="140" x2="560" y2="200"></line>
+          <rect class="box" x="460" y="200" width="200" height="80" rx="10"></rect>
+          <text x="490" y="236">InfluxDB（保存）</text>
+
+          <line class="arrow" x1="660" y1="240" x2="820" y2="240"></line>
+          <rect class="box" x="820" y="200" width="220" height="80" rx="10"></rect>
+          <text x="850" y="236">Grafana（可視化）</text>
+
+          <!-- 行3：操作（Grafana→ESP32） -->
+          <line class="arrow" x1="930" y1="200" x2="930" y2="140"></line>
+          <rect class="box" x="860" y="60" width="200" height="80" rx="10"></rect>
+          <text x="880" y="94">HTTPボタン操作</text>
+          <text x="910" y="118" fill="#6b7280">/send?code=…</text>
+
+          <line class="arrow" x1="860" y1="100" x2="750" y2="100"></line>
+          <text x="770" y="88" fill="var(--accent)">HTTP</text>
+
+          <!-- ESP32 -->
+          <rect class="box" x="620" y="60" width="110" height="80" rx="10"></rect>
+          <text x="642" y="94">ESP32</text>
+
+          <!-- 家電（IR） -->
+          <line class="arrow" x1="675" y1="140" x2="675" y2="300"></line>
+          <text x="688" y="220" fill="var(--accent)">赤外線</text>
+          <rect class="box" x="600" y="300" width="150" height="70" rx="10"></rect>
+          <text x="622" y="335">家電（暖炉/加湿器）</text>
+        </svg>
       </div>
+      <p class="sub">※ 実運用の順序に合わせたフロー（計測→保存→可視化→制御）。</p>
     </section>
 
-    <!-- Gallery -->
-    <section id="gallery" class="gray-section">
-      <h2>Gallery</h2>
-      <div class="gallery-grid">
-        <figure>
-          <img src="assets/smarthome_screenshot.jpg" alt="Grafana Dashboard">
-          <figcaption>Grafanaで可視化した温湿度データ</figcaption>
+    <!-- ギャラリー（統一サイズ・レスポンシブ） -->
+    <section id="gallery">
+      <h2>ギャラリー <span class="tag">Screens & Clips</span></h2>
+      <div class="gallery" style="margin-top: 10px;">
+        <figure class="wide">
+          <img src="assets/grafana_dashboard.png" alt="Grafana dashboard" />
+          <figcaption>GrafanaのカスタムUI（温湿度＋リモコンボタン）。</figcaption>
         </figure>
         <figure>
-          <video controls width="100%">
-            <source src="assets/smarthome_demo.mp4" type="video/mp4">
-            動画を再生できません。
-          </video>
-          <figcaption>ESP32によるエアコン制御デモ</figcaption>
+          <img src="assets/architecture.png" alt="System architecture capture" />
+          <figcaption>構成のスクリーンショット。</figcaption>
+        </figure>
+        <figure>
+          <video src="assets/demo.mp4" controls preload="metadata"></video>
+          <figcaption>デモ動画：温湿度表示〜HTTP→IRで家電制御。</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- Stack -->
-    <section class="content">
-      <h2>Technology Stack</h2>
-      <table class="stack-table">
-        <tr><th>Hardware</th><td>Raspberry Pi 4 / ESP32 / SHT31</td></tr>
-        <tr><th>Software</th><td>Python / Arduino IDE / InfluxDB / Grafana</td></tr>
-        <tr><th>Protocol</th><td>HTTP / I2C / Infrared</td></tr>
-        <tr><th>Tools</th><td>VS Code / GitHub / Terminal</td></tr>
-      </table>
+    <!-- 学び/工夫 -->
+    <section id="notes">
+      <h2>工夫と学び <span class="tag">Notes</span></h2>
+      <div class="grid cards">
+        <article class="card span-6">
+          <h3>工夫</h3>
+          <p>GrafanaのTextパネルにHTMLを入れて、HTTPボタンUIを“製品感”のあるカードに。IRコードは受信キャプチャから確実に再現。</p>
+        </article>
+        <article class="card span-6">
+          <h3>学び</h3>
+          <p>InfluxDBの時間エポックやGrafanaのクエリ修正、I2C/HTTP/IRのプロトコル境界の“責務”を明確化することの大切さ。</p>
+        </article>
+        <article class="card span-12">
+          <h3>次の一手</h3>
+          <p>HTTP→MQTT化（疎結合・双方向）、ESPHome/HA連携、温湿度の24h平滑化を活用した快適度スコア表示。</p>
+        </article>
+      </div>
     </section>
 
-    <!-- Challenges & Learnings -->
-    <section class="gray-section">
-      <h2>Challenges & Learnings</h2>
-      <ul class="learn-list">
-        <li>ESP32とRaspberry Pi間のHTTP通信で発生する遅延を軽減。</li>
-        <li>センサー値のノイズを平滑化するために平均化アルゴリズムを実装。</li>
-        <li>GrafanaのUIを「ホテルダッシュボード」を意識したデザインに調整。</li>
-        <li>家庭用電源環境でも安定稼働するよう電力供給を最適化。</li>
-      </ul>
+    <section style="margin-bottom: 60px;">
+      <a class="btn" href="index.html">表紙に戻る</a>
+      <a class="btn ghost" style="margin-left: 8px;" href="https://github.com/Makoto333yeah/smart-home-portfolio" target="_blank" rel="noopener">GitHub</a>
     </section>
-
-    <!-- Next Step -->
-    <section class="content">
-      <h2>Next Step</h2>
-      <p>今後はMQTT通信によるリアルタイム制御や、照明との連携、環境学習による自動調整を実装予定。</p>
-    </section>
-
   </main>
-
-  <footer>
-    <p>© 2025 Makoto Mita</p>
-  </footer>
 </body>
 </html>
