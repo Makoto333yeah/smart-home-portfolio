@@ -16,15 +16,19 @@
   </header>
 
   <main class="content">
+
+    <!-- プロジェクト概要 -->
     <section class="card">
       <h2>スマートホーム開発</h2>
       <h3>電子暖炉と加湿器の自動制御</h3>
-      <p>部屋の温湿度を計測し、リアルタイムで可視化。  
-      さらにESP32で家電を自動制御/遠隔操作できる、Raspberry Piベースのスマートホームシステム。</p>
+      <p>
+        温湿度を計測し、可視化・自動制御するRaspberry Pi × ESP32ベースのスマートホームシステム。  
+        部屋の「快適さ」をテクノロジーでデザインすることを目的に開発しました。
+      </p>
       <ul>
         <li>温湿度センサー（SHT31）でリアルタイムデータを取得</li>
-        <li>InfluxDB＋Grafanaでグラフ化</li>
-        <li>ESP32＋赤外線モジュールでエアコン制御</li>
+        <li>InfluxDB＋Grafanaで可視化</li>
+        <li>ESP32＋赤外線モジュールで家電制御</li>
         <li>HTTP通信でRaspberry Piと連携</li>
       </ul>
       <img src="assets/smarthome_screenshot.jpg" alt="Smart Home Dashboard" class="portfolio-image">
@@ -37,6 +41,93 @@
         </video>
       </div>
     </section>
+
+    <!-- プロジェクト概要（Purpose） -->
+    <section class="card">
+      <h2>Purpose｜プロジェクト概要</h2>
+      <p>
+        暮らしを“計測”し、“心地よく”変える。  
+        温湿度を定量化し、データから部屋の快適度を判断。  
+        体感と実測のズレを減らすことで、「空間の質」を再設計することを目指しました。
+      </p>
+    </section>
+
+    <!-- システム構成（Architecture） -->
+    <section class="card">
+      <h2>Architecture｜システム構成</h2>
+      <img src="assets/system_diagram.png" alt="System Architecture Diagram" class="portfolio-image">
+      <ul>
+        <li><strong>SHT31：</strong> 温湿度センサー（I2C通信）</li>
+        <li><strong>Raspberry Pi 4：</strong> Pythonスクリプトで制御・DB格納</li>
+        <li><strong>InfluxDB：</strong> 温湿度データを時系列で保存</li>
+        <li><strong>Grafana：</strong> データを可視化・操作UIを提供</li>
+        <li><strong>ESP32：</strong> HTTP経由で受信した信号を赤外線出力</li>
+        <li><strong>家電：</strong> 電子暖炉・加湿器を制御</li>
+      </ul>
+    </section>
+
+    <!-- 実装内容（Implementation） -->
+    <section class="card">
+      <h2>Implementation｜実装内容</h2>
+      <h3>センサー計測</h3>
+      <p>
+        Pythonの <code>smbus2</code> でSHT31から値を取得し、<code>influxdb-client</code> 経由でInfluxDBに記録。  
+        cronジョブで定期実行し、常時データを取得。
+      </p>
+      <h3>可視化</h3>
+      <p>
+        Grafanaでリアルタイムグラフ・数値表示・操作パネルを統合。  
+        HTML＋CSSのみでカスタムUIを実装し、エメラルドアクセントのブランド感を統一。
+      </p>
+      <h3>家電制御</h3>
+      <p>
+        Arduino IDEでESP32を開発し、HTTP経由で受け取った指令を赤外線に変換。  
+        家電リモコン信号をIR受信→送信モジュールで再現。
+      </p>
+    </section>
+
+    <!-- 特徴・工夫（Design & Refinement） -->
+    <section class="card">
+      <h2>Design & Refinement｜特徴・工夫</h2>
+      <ul>
+        <li>温湿度の「見える化」と「操作」を1つのUIに集約</li>
+        <li>ローカル完結構成により、プライバシー性と応答速度を両立</li>
+        <li>スマートディスプレイのようなデザイン性を意識（白・黒・エメラルド）</li>
+        <li>HTMLパネルによるリッチUI実装（Grafana Textパネル）</li>
+      </ul>
+    </section>
+
+    <!-- 成果と学び（Outcomes & Learnings） -->
+    <section class="card">
+      <h2>Outcomes & Learnings｜成果と学び</h2>
+      <ul>
+        <li>IoTシステムの全工程（計測→保存→可視化→制御）を自力で構築</li>
+        <li>ハード×ソフト×デザインの一貫した開発体験を実現</li>
+        <li>ESP32・Raspberry Pi・InfluxDB・Grafanaの総合理解</li>
+        <li>ユーザー体験と技術実装の橋渡し力を強化</li>
+      </ul>
+    </section>
+
+    <!-- 今後の展開（Next Steps） -->
+    <section class="card">
+      <h2>Next Steps｜今後の展開</h2>
+      <ul>
+        <li>HTTP制御からMQTTへ拡張（双方向通信対応）</li>
+        <li>Home Assistant / ESPHomeとの統合</li>
+        <li>温湿度トレンドから「快適度スコア」を算出・自動最適化</li>
+      </ul>
+    </section>
+
+    <!-- 添付メディア -->
+    <section class="card">
+      <h2>Media｜添付メディア</h2>
+      <ul>
+        <li>システム構成図：<code>system_diagram.png</code></li>
+        <li>データフロー図：<code>data_flow.png</code></li>
+        <li>Grafanaダッシュボード・動画デモ：<code>smarthome_demo.mp4</code></li>
+      </ul>
+    </section>
+
   </main>
 
   <footer>
