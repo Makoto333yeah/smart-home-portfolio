@@ -23,7 +23,7 @@
       <h3>電子暖炉と加湿器の自動制御</h3>
       <p>
         温湿度を計測し、可視化・自動制御するRaspberry Pi × ESP32ベースのスマートホームシステム。<br>  
-        部屋の「快適さ」をテクノロジーでデザインすることを目的に開発しました。
+        単なる遠隔操作ではなく、部屋の環境データを元に最適な状態へ調整する予見的な制御ロジックに挑戦しました。
       </p>
       <ul>
         <li>温湿度センサー（SHT31）でリアルタイムデータを取得</li>
@@ -31,9 +31,11 @@
         <li>ESP32＋赤外線モジュールで家電制御</li>
         <li>HTTP通信でRaspberry Piと連携</li>
       </ul>
+      <h3>Grafanaダッシュボード</h3>
       <img src="assets/smarthome_screenshot.jpg" alt="Smart Home Dashboard" class="portfolio-image">
-      <p>🧠 使用技術: Raspberry Pi / ESP32 / InfluxDB / Grafana / Python / Arduino</p>
+      <p>使用技術: Raspberry Pi / ESP32 / InfluxDB / Grafana / Python / Arduino</p>
 
+      <h3>デモ動画</h3>
       <div class="video-container">
         <video controls width="100%">
           <source src="assets/smarthome_demo.mp4" type="video/mp4">
@@ -94,7 +96,7 @@
         <li>温湿度の「見える化」と「操作」を1つのUIに集約</li>
         <li>ローカル完結構成により、プライバシー性と応答速度を両立</li>
         <li>スマートディスプレイのようなデザイン性を意識（白・黒・エメラルド）</li>
-        <li>HTMLパネルによるリッチUI実装（Grafana Textパネル）</li>
+        <li>温湿度の閾値で家電を自動制御</li>
       </ul>
     </section>
 
@@ -103,9 +105,7 @@
       <h2>Outcomes & Learnings｜成果と学び</h2>
       <ul>
         <li>IoTシステムの全工程（計測→保存→可視化→制御）を自力で構築</li>
-        <li>ハード×ソフト×デザインの一貫した開発体験を実現</li>
         <li>ESP32・Raspberry Pi・InfluxDB・Grafanaの総合理解</li>
-        <li>ユーザー体験と技術実装の橋渡し力を強化</li>
       </ul>
     </section>
 
@@ -114,7 +114,7 @@
       <h2>Next Steps｜今後の展開</h2>
       <ul>
         <li>HTTP制御からMQTTへ拡張（双方向通信対応）</li>
-        <li>Home Assistant / ESPHomeとの統合</li>
+        <li>Home Assistant（Alexa） / ESPHomeとの統合</li>
         <li>温湿度トレンドから「快適度スコア」を算出・自動最適化</li>
       </ul>
     </section>
