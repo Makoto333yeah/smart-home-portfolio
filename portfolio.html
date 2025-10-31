@@ -25,15 +25,12 @@
         温湿度を計測し、可視化・自動制御するRaspberry Pi × ESP32ベースのスマートホームシステム。<br>  
         単なる遠隔操作ではなく、部屋の環境データを元に最適な状態へ調整する予見的な制御ロジックに挑戦しました。
       </p>
-      <ul>
-        <li>温湿度センサー（SHT31）でリアルタイムデータを取得</li>
-        <li>InfluxDB＋Grafanaで可視化</li>
-        <li>ESP32＋赤外線モジュールで家電制御</li>
-        <li>HTTP通信でRaspberry Piと連携</li>
-      </ul>
 
-      <h3>Grafanaダッシュボード</h3>
+      <h3>SmartHomeダッシュボード</h3>
       <img src="assets/smarthome_screenshot.jpg" alt="Smart Home Dashboard" class="portfolio-image">
+
+      <h3>Prototype｜実機構成</h3>
+      <img src="assets/prototype.jpg" alt="Smart Home Dashboard" class="portfolio-image">
 
       <h3>デモ動画</h3>
       <div class="video-container">
@@ -43,16 +40,6 @@
         </video>
       </div>
       <p>使用技術: Raspberry Pi / ESP32 / InfluxDB / Grafana / Python / Arduino</p>
-    </section>
-
-    <!-- プロジェクト概要（Purpose） -->
-    <section class="card">
-      <h2>Purpose｜プロジェクト概要</h2>
-      <p>
-        暮らしを“計測”し、“心地よく”変える。<br>
-        温湿度を定量化し、データから部屋の快適度を判断。<br>  
-        体感と実測のズレを減らすことで、「空間の質」を再設計することを目指しました。
-      </p>
     </section>
 
     <!-- システム構成（Architecture） -->
@@ -104,8 +91,7 @@
       <ul>
         <li>温湿度の「見える化」と「操作」を1つのUIに集約</li>
         <li>ローカル完結構成により、プライバシー性と応答速度を両立</li>
-        <li>スマートディスプレイのようなデザイン性を意識（白・黒・エメラルド）</li>
-        <li>温湿度の閾値で家電を自動制御</li>
+        <li>ボタンやリモコンで遠隔で操作することなく、温湿度の閾値で家電を自動制御するような工夫</li>
       </ul>
     </section>
 
@@ -113,28 +99,28 @@
     <section class="card">
       <h2>Outcomes & Learnings｜成果と学び</h2>
       <ul>
-        <li>IoTシステムの全工程（計測→保存→可視化→制御）を自力で構築</li>
-        <li>ESP32・Raspberry Pi・InfluxDB・Grafanaの総合理解</li>
+        <li>IoTシステムの全工程（計測→保存→可視化→制御）を自力で構築できた</li>
+        <li>ESP32・Raspberry Pi・InfluxDB・Grafanaの総合理解ができた</li>
+        <li>自分が家で過ごす上での適温/適湿がそれぞれどの値なのかを知ることができた。</li>
       </ul>
+      <p>
+        今回は、IoT製品/スマートホームがどのようにして動いているのかを知りたいという欲求と、<br>
+        リモコン操作をせず家をより心地よい空間にしたいと思ったことが今回の開発のきっかけです。<br>
+        これまでエンジニアとしてやってきたこととは違う領域でしたが、<br>
+        実際に触れられる機器やモジュールがあることで、何かを生み出したかのような<br>
+        ワクワクと楽しさを感じることができました。<br>
+        作業中以外も今回の開発をやりたいと思えるほど熱中できるものを見つけられたのは大きな成果だと思います。<br>
+        まだまだ基礎的な部分の開発でもあるので、より高度な制御も引き続き学習していきます。
+      </p>
     </section>
 
     <!-- 今後の展開（Next Steps） -->
     <section class="card">
-      <h2>Next Steps｜今後の展開</h2>
+      <h2>Next Steps｜今後考えている展開</h2>
       <ul>
         <li>HTTP制御からMQTTへ拡張（双方向通信対応）</li>
         <li>Home Assistant（Alexa） / ESPHomeとの統合</li>
         <li>温湿度トレンドから「快適度スコア」を算出・自動最適化</li>
-      </ul>
-    </section>
-
-    <!-- 添付メディア -->
-    <section class="card">
-      <h2>Media｜添付メディア</h2>
-      <ul>
-        <li>システム構成図：<code>system_diagram.png</code></li>
-        <li>データフロー図：<code>data_flow.png</code></li>
-        <li>Grafanaダッシュボード・動画デモ：<code>smarthome_demo.mp4</code></li>
       </ul>
     </section>
 
