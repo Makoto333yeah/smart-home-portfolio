@@ -46,22 +46,14 @@
     <section class="card">
       <h2>Architecture｜システム構成</h2>
       <img src="assets/system_diagram.png" alt="System Architecture Diagram" class="portfolio-image">
-      <ul>
-        <li><strong>SHT31：</strong> 温湿度センサー（I2C通信）</li>
-        <li><strong>Raspberry Pi 4：</strong> Pythonスクリプトで制御・DB格納</li>
-        <li><strong>InfluxDB：</strong> 温湿度データを時系列で保存</li>
-        <li><strong>Grafana：</strong> データを可視化・操作UIを提供</li>
-        <li><strong>ESP32：</strong> HTTP経由で受信した信号を赤外線出力</li>
-        <li><strong>家電：</strong> 電子暖炉・加湿器を制御</li>
-      </ul>
       <h3>Data Flow｜データフロー</h3>
-      <ol class="dataflow-list">
+      <ul>
         <li><strong>① SHT31 → Raspberry Pi：</strong> 温湿度データをI2C通信で定期取得。</li>
         <li><strong>② Raspberry Pi → InfluxDB：</strong> Pythonスクリプトでセンサー値をDBに記録。</li>
         <li><strong>③ InfluxDB → Grafana：</strong> 保存されたデータをリアルタイムでグラフ化。</li>
         <li><strong>④ Grafana → ESP32：</strong> HTTPリクエストを送信して家電制御信号を発行。</li>
         <li><strong>⑤ ESP32 → 家電：</strong> 赤外線LEDで暖炉・加湿器をON/OFF制御。</li>
-      </ol>
+      </ul>
     </section>
 
     <!-- 実装内容（Implementation） -->
@@ -99,8 +91,8 @@
     <section class="card">
       <h2>Outcomes & Learnings｜成果と学び</h2>
       <ul>
-        <li>IoTシステムの全工程（計測→保存→可視化→制御）を自力で構築できた</li>
-        <li>ESP32・Raspberry Pi・InfluxDB・Grafanaの総合理解ができた</li>
+        <li>IoTシステムの全工程（計測→保存→可視化→制御）を自力で構築できた。</li>
+        <li>ESP32・Raspberry Pi・InfluxDB・Grafanaの総合理解ができた。</li>
         <li>自分が家で過ごす上での適温/適湿がそれぞれどの値なのかを知ることができた。</li>
       </ul>
       <p>
