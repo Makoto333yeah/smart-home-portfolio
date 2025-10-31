@@ -47,13 +47,13 @@
       <h2>Architecture｜システム構成</h2>
       <img src="assets/system_diagram.png" alt="System Architecture Diagram" class="portfolio-image">
       <h3>Data Flow｜データフロー</h3>
-      <ul>
-        <li><strong>① SHT31 → Raspberry Pi：</strong> 温湿度データをI2C通信で定期取得。</li>
-        <li><strong>② Raspberry Pi → InfluxDB：</strong> Pythonスクリプトでセンサー値をDBに記録。</li>
-        <li><strong>③ InfluxDB → Grafana：</strong> 保存されたデータをリアルタイムでグラフ化。</li>
-        <li><strong>④ Grafana → ESP32：</strong> HTTPリクエストを送信して家電制御信号を発行。</li>
-        <li><strong>⑤ ESP32 → 家電：</strong> 赤外線LEDで暖炉・加湿器をON/OFF制御。</li>
-      </ul>
+      <p>
+        <strong>① SHT31 → Raspberry Pi：</strong> 温湿度データをI2C通信で定期取得。<br>
+        <strong>② Raspberry Pi → InfluxDB：</strong> Pythonスクリプトでセンサー値をDBに記録。<br>
+        <strong>③ InfluxDB → Grafana：</strong> 保存されたデータをリアルタイムでグラフ化。<br>
+        <strong>④ Grafana → ESP32：</strong> HTTPリクエストを送信して家電制御信号を発行。<br>
+        <strong>⑤ ESP32 → 家電：</strong> 赤外線LEDで暖炉・加湿器をON/OFF制御。
+      </p>
     </section>
 
     <!-- 実装内容（Implementation） -->
@@ -95,6 +95,7 @@
         <li>ESP32・Raspberry Pi・InfluxDB・Grafanaの総合理解ができた。</li>
         <li>自分が家で過ごす上での適温/適湿がそれぞれどの値なのかを知ることができた。</li>
       </ul>
+      <h3>感想</h3>
       <p>
         今回は、IoT製品/スマートホームがどのようにして動いているのかを知りたいという欲求と、<br>
         リモコン操作をせず家をより心地よい空間にしたいと思ったことが今回の開発のきっかけです。<br>
