@@ -106,6 +106,21 @@ h1 {
   background: #E6F9F5;
 }
 
+.dataflow-list {
+  margin-top: 1em;
+  padding-left: 1.2em;
+  line-height: 1.8;
+  background-color: #f9fafb;
+  border-left: 4px solid #00b8b0; /* エメラルドブルーアクセント */
+  border-radius: 6px;
+  padding: 1em 1.2em;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.dataflow-list li {
+  margin-bottom: 0.6em;
+}
 /* ---------- 画像 ---------- */
 .portfolio-image {
   width: 100%;
