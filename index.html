@@ -3,30 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Makoto Mita | Engineer</title>
+  <title>Makoto Mita | Smart Home Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <div class="logo">Makoto Mita</div>
+    <a href="index.html" class="logo">MAKOTO MITA</a>
     <nav>
       <a href="profile.html">PROFILE</a>
       <a href="portfolio.html">PORTFOLIO</a>
     </nav>
   </header>
 
-  <main class="hero">
-    <img src="assets/face.jpg" alt="Makoto Mita" class="profile-image">
-    <h1>Makoto Mita</h1>
-    <p class="subtext">「空間体験」から逆算し、技術で実現するエンジニア。</p>
-    <div class="buttons">
-      <a href="profile.html" class="btn">PROFILE</a>
-      <a href="portfolio.html" class="btn">PORTFOLIO</a>
+  <!-- Hero: Full-bleed image with overlay text -->
+  <section class="hero">
+    <img src="assets/prototype.jpg" alt="Smart Home Prototype" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>NOT JUST<br>A HOME.</h1>
+      <p>テクノロジーが、住空間を静かに変える。</p>
     </div>
-  </main>
+  </section>
 
+  <!-- About -->
+  <section class="about">
+    <div class="about-inner">
+      <p class="about-lead">
+        温度と湿度を感じ取り、<br>
+        家電を自律的に制御する。<br>
+        それが、私の考えるスマートホーム。
+      </p>
+      <p class="about-body">
+        Raspberry Pi と SHT31 センサーが環境を常時モニタリングし、
+        ESP32 が赤外線で家電を制御。リモコンに触れることなく、
+        空間が自ら快適な状態へ整う仕組みを設計しました。
+      </p>
+    </div>
+  </section>
+
+  <!-- Features 01-04 -->
+  <section class="features">
+
+    <div class="feature-block">
+      <div class="feature-text">
+        <span class="feature-num">01</span>
+        <h2>Environmental Sensing</h2>
+        <p>SHT31 高精度センサーが室内の温度・湿度をリアルタイムに計測。I2C通信で Raspberry Pi へ常時データを送信し、InfluxDB に蓄積します。</p>
+      </div>
+      <div class="feature-image">
+        <img src="assets/smarthome_screenshot.jpg" alt="Smart Home Dashboard">
+      </div>
+    </div>
+
+    <div class="feature-block feature-block--reverse">
+      <div class="feature-text">
+        <span class="feature-num">02</span>
+        <h2>Data Visualization</h2>
+        <p>蓄積されたデータを Grafana がリアルタイムにグラフ化。温湿度の推移から操作パネルまで、ひとつのダッシュボードに集約しています。</p>
+      </div>
+      <div class="feature-image">
+        <img src="assets/grafana_control.png" alt="Grafana Dashboard">
+      </div>
+    </div>
+
+    <div class="feature-block">
+      <div class="feature-text">
+        <span class="feature-num">03</span>
+        <h2>Autonomous Control</h2>
+        <p>設定した閾値に基づき、ESP32 が赤外線信号を送信。電子暖炉と加湿器を自動で ON/OFF。人が何もしなくても、空間が自ら整います。</p>
+      </div>
+      <div class="feature-image">
+        <img src="assets/system_diagram.png" alt="System Architecture">
+      </div>
+    </div>
+
+    <div class="feature-block feature-block--reverse">
+      <div class="feature-text">
+        <span class="feature-num">04</span>
+        <h2>Local Architecture</h2>
+        <p>クラウドに依存しないローカル完結設計。プライバシーと高速レスポンスを両立しながら、すべてを自宅ネットワーク内で制御します。</p>
+      </div>
+      <div class="feature-image">
+        <img src="assets/prototype.jpg" alt="Hardware Setup">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="tech">
+    <h2 class="tech-heading">Technology</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <span class="tech-name">Raspberry Pi</span>
+        <span class="tech-role">Central Controller</span>
+      </div>
+      <div class="tech-card">
+        <span class="tech-name">ESP32</span>
+        <span class="tech-role">IR Transmitter</span>
+      </div>
+      <div class="tech-card">
+        <span class="tech-name">SHT31</span>
+        <span class="tech-role">Temp &amp; Humidity</span>
+      </div>
+      <div class="tech-card">
+        <span class="tech-name">InfluxDB</span>
+        <span class="tech-role">Time Series DB</span>
+      </div>
+      <div class="tech-card">
+        <span class="tech-name">Grafana</span>
+        <span class="tech-role">Dashboard</span>
+      </div>
+      <div class="tech-card">
+        <span class="tech-name">Python</span>
+        <span class="tech-role">Sensor Logic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Video -->
+  <section class="demo">
+    <p class="demo-label">DEMO</p>
+    <h2 class="demo-heading">動作の様子</h2>
+    <div class="demo-video-wrap">
+      <video controls muted playsinline>
+        <source src="assets/demo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <p class="cta-label">MORE DETAILS</p>
+    <div class="cta-links">
+      <a href="portfolio.html">PORTFOLIO</a>
+      <a href="profile.html">PROFILE</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Makoto Mita</p>
+    <div class="footer-inner">
+      <span class="footer-logo">MAKOTO MITA</span>
+      <span class="footer-copy">&copy; 2025 Makoto Mita</span>
+    </div>
   </footer>
+
 </body>
 </html>

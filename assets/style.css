@@ -1,138 +1,562 @@
-/* ---------- 全体設定 ---------- */
-body {
-  font-family: "Inter", "Noto Sans JP", sans-serif;
-  color: #000;
-  background-color: #fff;
+/* ================================================
+   MAKOTO MITA — Smart Home Portfolio
+   NOT A HOTEL inspired: Bold minimal luxury
+   ================================================ */
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
-  line-height: 1.7;
+  box-sizing: border-box;
 }
 
-/* ---------- ヘッダー ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  color: #000;
+  background: #fff;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- Header ---------- */
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 60px;
-  border-bottom: 1px solid #eee;
+  padding: 24px 48px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 1.2em;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: #000;
 }
 
 nav a {
-  margin-left: 30px;
-  text-decoration: none;
+  margin-left: 32px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   color: #000;
-  font-weight: 500;
-  transition: color 0.3s;
+  transition: opacity 0.3s;
 }
 
 nav a:hover {
-  color: #00C8B5;
+  opacity: 0.4;
 }
 
-/* ---------- Heroセクション ---------- */
+/* ========================================
+   HERO — Full-bleed image + overlay text
+   ======================================== */
 .hero {
-  text-align: center;
-  padding: 80px 20px;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.profile-image {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin-bottom: 30px;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
 }
 
-.subtext {
-  color: #555;
-  font-size: 1.1rem;
-  margin-bottom: 40px;
-}
-
-/* ---------- ボタン ---------- */
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.btn {
-  border: 2px solid #00C8B5;
-  padding: 12px 28px;
-  border-radius: 4px;
-  text-decoration: none;
-  color: #00C8B5;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #00C8B5;
+.hero-content {
+  position: absolute;
+  bottom: 100px;
+  left: 48px;
   color: #fff;
 }
 
-/* ---------- メインコンテンツ ---------- */
+.hero-content h1 {
+  font-size: clamp(3.2rem, 10vw, 7rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+/* ========================================
+   ABOUT
+   ======================================== */
+.about {
+  padding: 160px 48px;
+}
+
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.about-lead {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  margin-bottom: 48px;
+}
+
+.about-body {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 2.4;
+  color: #555;
+}
+
+/* ========================================
+   FEATURES — 01-04: text + image stacked
+   NOT A HOTEL style: generous space, image
+   shown at natural aspect ratio
+   ======================================== */
+.features {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 48px 0;
+}
+
+.feature-block {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 64px;
+  align-items: start;
+  padding: 80px 0;
+  border-top: 1px solid #eee;
+}
+
+.feature-block--reverse {
+  grid-template-columns: 7fr 5fr;
+}
+
+/* Reverse: text on right, image on left */
+.feature-block--reverse .feature-text {
+  order: 2;
+}
+
+.feature-block--reverse .feature-image {
+  order: 1;
+}
+
+.feature-image {
+  overflow: hidden;
+}
+
+.feature-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s ease;
+}
+
+.feature-block:hover .feature-image img {
+  transform: scale(1.02);
+}
+
+.feature-text {
+  padding-top: 16px;
+}
+
+.feature-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #bbb;
+  margin-bottom: 28px;
+}
+
+.feature-text h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+.feature-text p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 2.2;
+  color: #666;
+}
+
+/* ========================================
+   TECH STACK
+   ======================================== */
+.tech {
+  padding: 160px 48px;
+  text-align: center;
+}
+
+.tech-heading {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 80px;
+}
+
+.tech-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+}
+
+.tech-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 24px;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s;
+}
+
+.tech-card:hover {
+  background: #f7f7f7;
+}
+
+.tech-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.tech-role {
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: #999;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   DEMO VIDEO — Contained with padding
+   ======================================== */
+.demo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 160px 48px;
+  text-align: center;
+}
+
+.demo-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #bbb;
+  margin-bottom: 16px;
+}
+
+.demo-heading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 56px;
+}
+
+.demo-video-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.demo-video-wrap video {
+  width: 100%;
+  display: block;
+}
+
+/* ========================================
+   CTA
+   ======================================== */
+.cta {
+  padding: 160px 48px;
+  text-align: center;
+}
+
+.cta-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: #bbb;
+  margin-bottom: 48px;
+}
+
+.cta-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.cta-links a {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #000;
+  position: relative;
+  transition: opacity 0.3s;
+}
+
+.cta-links a:hover {
+  opacity: 0.4;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+  border-top: 1px solid #eee;
+  padding: 40px 48px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.footer-copy {
+  font-size: 0.65rem;
+  font-weight: 300;
+  color: #aaa;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   CONTENT PAGES — Profile & Portfolio
+   ======================================== */
 .content {
   max-width: 800px;
-  margin: 60px auto;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 160px 48px 120px;
 }
 
 .card {
-  background: #f9f9f9;
-  border-radius: 10px;
-  padding: 30px;
-  margin-bottom: 40px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 64px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.card:last-child {
+  border-bottom: none;
 }
 
 .card h2 {
-  color: #00C8B5;
-  margin-bottom: 15px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 32px;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.card p,
+.card li {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 2.2;
+  color: #555;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  padding-left: 1.4em;
+  position: relative;
+}
+
+.card ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.95em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ccc;
 }
 
 .card.contact {
-  background: #E6F9F5;
+  background: transparent;
 }
 
-.dataflow-list {
-  margin-top: 1em;
-  padding-left: 1.2em;
-  line-height: 1.8;
-  background-color: #f9fafb;
-  border-left: 4px solid #00b8b0; /* エメラルドブルーアクセント */
-  border-radius: 6px;
-  padding: 1em 1.2em;
-  font-size: 0.95rem;
-  color: #333;
+.card a {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #ddd;
+  transition: border-color 0.3s;
 }
 
-.dataflow-list li {
-  margin-bottom: 0.6em;
+.card a:hover {
+  border-color: #000;
 }
-/* ---------- 画像 ---------- */
+
+.card code {
+  font-size: 0.85rem;
+  background: #f5f5f5;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+
+/* ---------- Portfolio images & video ---------- */
 .portfolio-image {
   width: 100%;
-  border-radius: 10px;
-  margin: 20px 0;
+  margin: 32px 0;
 }
 
-/* ---------- フッター ---------- */
-footer {
-  text-align: center;
-  padding: 40px 0;
+.video-container {
+  margin: 32px 0;
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+}
+
+/* ---------- Data Flow list ---------- */
+.dataflow-list {
+  margin-top: 1em;
+  padding: 0;
+  list-style: none;
+  border-left: none;
+  background: transparent;
   font-size: 0.9rem;
-  color: #888;
-  border-top: 1px solid #eee;
+  color: #555;
+  line-height: 2.2;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  header {
+    padding: 18px 24px;
+  }
+
+  .hero-content {
+    bottom: 60px;
+    left: 24px;
+    right: 24px;
+  }
+
+  .about {
+    padding: 100px 24px;
+  }
+
+  .features {
+    padding: 40px 24px 0;
+  }
+
+  .feature-block {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 56px 0;
+  }
+
+  .feature-block--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-block--reverse .feature-text {
+    order: 1;
+  }
+
+  .feature-block--reverse .feature-image {
+    order: 2;
+  }
+
+  .demo {
+    padding: 100px 24px;
+  }
+
+  .tech {
+    padding: 100px 24px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta {
+    padding: 100px 24px;
+  }
+
+  .cta-links {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .cta-links a {
+    font-size: 1.3rem;
+  }
+
+  footer {
+    padding: 32px 24px;
+  }
+
+  .content {
+    padding: 120px 24px 80px;
+  }
 }
