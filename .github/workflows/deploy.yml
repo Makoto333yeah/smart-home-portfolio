@@ -1,0 +1,17 @@
+name: Deploy to NAS
+
+on:
+  push:
+    branches: [ "main" ] # GitHubの画面で「main」か「master」か確認して合わせてください
+
+jobs:
+  deploy:
+    runs-on: self-hosted # NASの「執事（ランナー）」を指名！
+    steps:
+      - name: コードをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: 公開フォルダにコピー
+        run: |
+          # 執事が自分の部屋からNASの公開用フォルダ（/data）へファイルをコピーします
+          cp -r ./* /data/
